@@ -488,11 +488,10 @@ a { color: inherit; text-decoration: none; }
   gap: 1.5rem;
   width: 100%;
   position: relative;
-  left: 3rem;                         /* positive = right, negative = left */
+  left: -1rem;                         /* positive = right, negative = left */
   padding: 2rem 2.5rem;
   border-radius: 2rem;
-  background: linear-gradient(180deg, #efd3dd, #e7bfcb);
-  box-shadow: 0 0 30px 22px #eacbd5;
+  background: linear-gradient(180deg, #f5d1d9, #ebb7c4);
 }
 
 .contact__sub {
@@ -500,12 +499,6 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 700;
   color: var(--brown);
-  text-shadow:
-    0 0 6px  rgba(255, 255, 255, 1),
-    0 0 14px rgba(255, 255, 255, 1),
-    0 0 28px rgba(255, 247, 236, 1),
-    0 0 46px rgba(255, 247, 236, .9),
-    0 0 70px rgba(255, 247, 236, .8);
 }
 
 .contact__list {
@@ -515,16 +508,10 @@ a { color: inherit; text-decoration: none; }
   gap: 1.2rem;
 }
 .contact__list li {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
   line-height: 1.5;
   color: var(--brown);
   overflow-wrap: anywhere;            /* long links wrap on small screens */
-  text-shadow:
-    0 0 6px  rgba(255, 255, 255, 1),
-    0 0 14px rgba(255, 255, 255, 1),
-    0 0 28px rgba(255, 247, 236, 1),
-    0 0 46px rgba(255, 247, 236, .9),
-    0 0 70px rgba(255, 247, 236, .8);
 }
 .contact__list strong { font-weight: 700; }
 .contact__list a {
@@ -532,7 +519,7 @@ a { color: inherit; text-decoration: none; }
   text-decoration: none;
   transition: color .2s;
 }
-.contact__list a:hover { color: var(--pink-deep); }
+.contact__list a:hover { color: #d9869c; }
 .contact__list a:focus-visible { outline: 3px solid var(--brown); outline-offset: 2px; }
 
 /* Tablet & desktop: photo left, info right */
