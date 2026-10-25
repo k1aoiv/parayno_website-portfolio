@@ -4,11 +4,16 @@
   --dots:       #fff7ec;   /* polka dots */
   --brown:      #7a5a4a;
   --white:      #ffffff;
-  --nav-h:      64px;
+  --nav-h:      4rem;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 100%; }
+html { scroll-behavior: smooth; font-size: 100%; overflow-x: hidden; }
+
+@media (min-width: 768px) {
+  html { font-size: clamp(10px, 0.66vw, 20px); }
+}
+
 body {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   color: var(--brown);
@@ -30,16 +35,12 @@ a { color: inherit; text-decoration: none; }
   padding: 0 1.25rem;
 }
 .nav__logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
+  display: grid; place-items: center;
+  width: 3rem; height: 3rem;
   border-radius: 50%;
   background: var(--pink-deep);
   color: var(--dots);
   font-size: 2rem;
-  line-height: 1; 
   box-shadow: 0 2px 8px rgba(122, 90, 74, .18);
 }
 .nav__links {
@@ -105,10 +106,10 @@ a { color: inherit; text-decoration: none; }
 
   /* polka dots */
   background-image:
-    radial-gradient(circle, var(--dots) 0 13px, transparent 14px),
-    radial-gradient(circle, var(--dots) 0 13px, transparent 14px);
-  background-size: 160px 160px;
-  background-position: 0 0, 80px 80px;
+    radial-gradient(circle, var(--dots) 0 .8125rem, transparent .875rem),
+    radial-gradient(circle, var(--dots) 0 .8125rem, transparent .875rem);
+  background-size: 10rem 10rem;
+  background-position: 0 0, 5rem 5rem;
   padding-top: 3rem;
 }
 
@@ -134,10 +135,10 @@ a { color: inherit; text-decoration: none; }
 /* Photo (oval sticker) */
 .photo {
   position: relative;
-  width: min(85vw, 450px);
+  width: min(85vw, 28.125rem);
   aspect-ratio: 3 / 4;
   border-radius: 50%;
-  border: 9px solid var(--white);
+  border: .5625rem solid var(--white);
   background: var(--pink-light);
   box-shadow: 0 8px 22px rgba(122, 90, 74, .25);
   overflow: hidden;
@@ -175,7 +176,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- About Me ---------- */
-
 .about {
   position: relative;
   overflow: hidden;
@@ -189,8 +189,8 @@ a { color: inherit; text-decoration: none; }
   background-color: #d3e3e9;
   background-image: repeating-linear-gradient(
     90deg,
-    #d6e5e9 0 48px,
-    #ccdee6 48px 96px
+    #d6e5e9 0 3rem,
+    #ccdee6 3rem 6rem
   );
 }
 
@@ -198,7 +198,7 @@ a { color: inherit; text-decoration: none; }
 .star--about-a, .star--edu-a { --s: 2.8rem; top: 12%;    left: 28%; }
 .star--about-b, .star--edu-b { --s: 3.5rem; top: 25%;    right: 10%; }
 .star--about-c, .star--edu-c { --s: 2.8rem; bottom: 14%; left: 15%; }
-.star--about-d, .star--edu-d { --s: 2.4rem; bottom: 4%;  left: 45%; }
+.star--about-d, .star--edu-d { --s: 2.4rem; bottom: 8%;  left: 45%; }
 .star--about-e, .star--edu-e { --s: 4rem;   top: 32%;    left: 8%; }
 .star--about-f, .star--edu-f { --s: 3rem;   bottom: 15%; right: 8%; }
 
@@ -214,7 +214,7 @@ a { color: inherit; text-decoration: none; }
 
 .about__box {
   width: 100%;
-  max-width: 1080px;
+  max-width: 67.5rem;
   padding: clamp(1.5rem, 4vw, 3rem);
   background: var(--dots);
   border-radius: 1.5rem;
@@ -237,7 +237,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   gap: 1.5rem;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + .05em) 03rem;
+  padding: calc(var(--nav-h) + .05em) 3rem;
   background: linear-gradient(170deg, #f5eedb, #f5e7c0);
 }
 
@@ -286,8 +286,8 @@ a { color: inherit; text-decoration: none; }
 /* All 6 cards: same width, same height */
 .card {
   flex: 0 0 auto;
-  width: clamp(290px, 82vw, 440px);
-  min-height: 340px;
+  width: clamp(18rem, 82vw, 27.5rem);
+  min-height: 21.25rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -331,21 +331,20 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 4rem;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 4rem) clamp(3.5rem, 10vw, 3in) 5rem;
+  padding: calc(var(--nav-h) + 4rem) clamp(3.5rem, 10vw, 18rem) 5rem;
   background-color: #d3e3e9;
   background-image: repeating-linear-gradient(
     90deg,
-    #ddd3e9 0 48px,
-    #dacee7 48px 96px
+    #ddd3e9 0 3rem,
+    #dacee7 3rem 6rem
   );
 }
 
 .education__title {
   position: relative;
-  z-index: 1;
-  left: 3rem;                 /* positive = right, negative = left */
+  z-index: 1;                       /* title sits above the stars */
   width: 100%;
   font-family: 'Bigdey', cursive, sans-serif;
   font-size: clamp(9rem, 16vw, 12.5rem);
@@ -424,7 +423,7 @@ a { color: inherit; text-decoration: none; }
 /* Tablet & desktop: narrow years column, wide details column */
 @media (min-width: 768px) {
   .edu-row {
-    grid-template-columns: clamp(220px, 22vw, 400px) 1fr;
+    grid-template-columns: clamp(13.75rem, 22vw, 25rem) 1fr;
     gap: 3rem;
     padding: 3.5rem 0;
   }
@@ -432,98 +431,108 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Contact ---------- */
 .contact {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;           /* centers everything vertically */
+  justify-content: center;
   gap: clamp(2rem, 5vw, 4rem);
   min-height: 100svh;
   padding: calc(var(--nav-h) + 1.5rem) clamp(1.5rem, 6vw, 6rem) 4rem;
+
+  /* gradient + polka dots */
   background-color: var(--pink-light);
   background-image:
-    radial-gradient(circle, var(--dots) 0 13px, transparent 14px),
-    radial-gradient(circle, var(--dots) 0 13px, transparent 14px),
+    radial-gradient(circle, var(--dots) 0 .8125rem, transparent .875rem),
+    radial-gradient(circle, var(--dots) 0 .8125rem, transparent .875rem),
     linear-gradient(180deg, var(--pink-light), var(--pink-deep));
-  background-size: 160px 160px, 160px 160px, 100% 100%;
-  background-position: 0 0, 80px 80px, 0 0;
+  background-size: 10rem 10rem, 10rem 10rem, 100% 100%;
+  background-position: 0 0, 5rem 5rem, 0 0;
   background-repeat: repeat, repeat, no-repeat;
-  position: relative;
-  overflow: hidden;
 }
 
 .contact__title {
+  position: relative;
+  left: 3rem;                         /* positive = right, negative = left */
   width: 100%;
   font-family: 'Bigdey', cursive, sans-serif;
-  font-size: clamp(9rem, 16vw, 12.5rem);
+  font-size: clamp(5rem, 10vw, 8.5rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.25;                  /* room for the swirls under the letters */
   color: var(--brown);
   text-align: center;
-  position: relative;
-  left: 15rem;                 /* positive = right, negative = left */
 }
-
-/* The demo font has no "!" glyph, so use Arial for it */
-.contact__bang { font-family: Arial, Helvetica, sans-serif; }
 
 /* Picture on the left, info on the right */
 .contact__content {
   display: flex;
-  flex-direction: column;            /* mobile first: stacked */
+  flex-direction: column;             /* mobile first: stacked */
   align-items: center;
   gap: 2.5rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 75rem;
 }
 
 .contact .photo {
-  width: min(80vw, 400px);
+  width: min(80vw, 25rem);
   flex-shrink: 0;
   position: relative;
-  top: -5rem;   
-  left: 3rem;              /* negative = up, positive = down */
+  top: -3rem;                         /* more negative = higher */
 }
 
+/* Info block: soft panel hides the dots behind the text */
 .contact__info {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
   position: relative;
-  top: -2rem;
-  left: -1rem;                 /* positive = right, negative = left */
+  left: 3rem;                         /* positive = right, negative = left */
   padding: 2rem 2.5rem;
   border-radius: 2rem;
-  background: linear-gradient(180deg, #f4d0d8, #ebb7c4);
+  background: linear-gradient(180deg, #efd3dd, #e7bfcb);
+  box-shadow: 0 0 30px 22px #eacbd5;
 }
 
 .contact__sub {
   margin-top: .75rem;
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 700;
   color: var(--brown);
+  text-shadow:
+    0 0 6px  rgba(255, 255, 255, 1),
+    0 0 14px rgba(255, 255, 255, 1),
+    0 0 28px rgba(255, 247, 236, 1),
+    0 0 46px rgba(255, 247, 236, .9),
+    0 0 70px rgba(255, 247, 236, .8);
 }
 
 .contact__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: .9rem;
+  gap: 1.2rem;
 }
 .contact__list li {
-  font-size: clamp(1.5rem, 2.1vw, 1.8rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   line-height: 1.5;
   color: var(--brown);
-  overflow-wrap: anywhere;           /* long links wrap on small screens */
+  overflow-wrap: anywhere;            /* long links wrap on small screens */
+  text-shadow:
+    0 0 6px  rgba(255, 255, 255, 1),
+    0 0 14px rgba(255, 255, 255, 1),
+    0 0 28px rgba(255, 247, 236, 1),
+    0 0 46px rgba(255, 247, 236, .9),
+    0 0 70px rgba(255, 247, 236, .8);
 }
 .contact__list strong { font-weight: 700; }
 .contact__list a {
   color: var(--brown);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
   transition: color .2s;
 }
-.contact__list a:hover { color: #db8da0; }
+.contact__list a:hover { color: var(--pink-deep); }
 .contact__list a:focus-visible { outline: 3px solid var(--brown); outline-offset: 2px; }
 
 /* Tablet & desktop: photo left, info right */
@@ -531,7 +540,7 @@ a { color: inherit; text-decoration: none; }
   .contact__content {
     flex-direction: row;
     align-items: center;
-    justify-content: center;         /* photo + info sit in the middle */
+    justify-content: center;
     gap: clamp(2.5rem, 6vw, 6rem);
   }
   .contact__info { flex: 0 1 auto; width: auto; }
@@ -562,14 +571,12 @@ a { color: inherit; text-decoration: none; }
 @media (min-width: 768px) {
   .hero { flex-direction: row; }
   .hero__left, .hero__right { padding: 3rem 2rem; }
-  .photo { width: min(45vw, 500px); border-width: 10px; }
+  .photo { width: min(45vw, 31.25rem); border-width: .625rem; }
   .nav { padding: 0 2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-@media (min-width: 768px) {
-  html { font-size: clamp(12px, 1.05vw, 16px); }
-}
+  html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
 
